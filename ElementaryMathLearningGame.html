@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ماموریت تقسیم</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Tahoma, Arial, sans-serif;
+        background: linear-gradient(135deg, #fff7df, #e8f7ff);
+        min-height: 100vh;
+        color: #334;
+      }
+      .screen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .card {
+        width: min(850px, 96vw);
+        background: #ffffffdd;
+        border-radius: 30px;
+        padding: 28px;
+        box-shadow: 0 12px 35px #0002;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 52px);
+        margin: 8px 0 10px;
+      }
+      .teacher {
+        font-size: 22px;
+        margin-bottom: 22px;
+        color: #6b5b95;
+      }
+      button {
+        font: inherit;
+        border: 0;
+        border-radius: 18px;
+        padding: 14px 28px;
+        cursor: pointer;
+        box-shadow: 0 5px 12px #0002;
+      }
+      .start {
+        font-size: 25px;
+        background: #f7c96b;
+      }
+      .music {
+        background: #dff3e6;
+        margin-top: 12px;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+      .lives {
+        font-size: 28px;
+        letter-spacing: 3px;
+        direction: ltr;
+      }
+      .bunny {
+        font-size: 80px;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .bunny.clap {
+        animation: clap 0.45s 2;
+      }
+      @keyframes clap {
+        50% {
+          transform: scale(1.12) rotate(-4deg);
+        }
+      }
+      .question {
+        font-size: clamp(42px, 9vw, 72px);
+        font-weight: bold;
+        margin: 12px 0 25px;
+        direction: ltr;
+      }
+      .answers {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        direction: ltr;
+      }
+      .answer {
+        min-width: 110px;
+        font-size: 32px;
+        background: #f3e7ff;
+        touch-action: none;
+      }
+      .answer:hover {
+        transform: translateY(-3px);
+      }
+      .feedback {
+        height: 45px;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 18px;
+      }
+      .small {
+        font-size: 14px;
+        color: #667;
+        margin-top: 18px;
+      }
+      #musicBtn {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="start" class="screen">
+      <div class="card">
+        <div style="font-size: 90px">🐰</div>
+        <h1>ماموریت تقسیم</h1>
+        <div class="teacher">آموزگار: محمدرضا جمشیدی باویل علیائی</div>
+        <p>جواب درست را بگیر و روی جای جواب بگذار!</p>
+        <button class="start" onclick="startGame()">شروع بازی ▶️</button><br />
+        <button class="music" id="musicBtn" onclick="toggleMusic()">
+          🎵 آهنگ ملایم: روشن
+        </button>
+        <div class="small">بازی به‌صورت کاملاً آفلاین اجرا می‌شود.</div>
+      </div>
+    </div>
+
+    <div id="game" class="screen hidden">
+      <div class="card">
+        <div class="top">
+          <span id="stage">مرحله ۱ از ۱۵</span
+          ><span id="lives" class="lives">🥕🥕🥕</span>
+        </div>
+        <div id="bunny" class="bunny">🐰</div>
+        <div id="question" class="question"></div>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback"></div>
+        <div class="small">کارت جواب درست را انتخاب کن.</div>
+      </div>
+    </div>
+
+    <div id="end" class="screen hidden">
+      <div class="card">
+        <div style="font-size: 100px">🐰👏🎉</div>
+        <h1>تبریک قهرمان!</h1>
+        <p style="font-size: 25px">تو مأموریت تقسیم را با موفقیت انجام دادی!</p>
+        <button class="start" onclick="startGame()">دوباره بازی کن 🔄</button>
+      </div>
+    </div>
+
+    <script>
+      const levels = [
+        [6, 2, 3],
+        [8, 2, 4],
+        [10, 2, 5],
+        [12, 3, 4],
+        [15, 3, 5],
+        [18, 3, 6],
+        [20, 4, 5],
+        [24, 4, 6],
+        [28, 4, 7],
+        [30, 5, 6],
+        [36, 6, 6],
+        [42, 6, 7],
+        [48, 6, 8],
+        [56, 7, 8],
+        [72, 8, 9],
+      ];
+      let level = 0,
+        lives = 3,
+        music = true,
+        audioCtx = null,
+        melodyTimer = null;
+
+      function fa(n) {
+        return String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+      }
+      function startGame() {
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("end").classList.add("hidden");
+        document.getElementById("game").classList.remove("hidden");
+        level = 0;
+        lives = 3;
+        render();
+        if (music) startMusic();
+      }
+      function render() {
+        const [a, b, c] = levels[level];
+        document.getElementById("stage").textContent = `مرحله ${fa(
+          level + 1
+        )} از ${fa(15)}`;
+        document.getElementById("lives").textContent =
+          "🥕".repeat(lives) + "▫️".repeat(3 - lives);
+        document.getElementById("question").textContent = `${fa(a)} ÷ ${fa(
+          b
+        )} = ؟`;
+        document.getElementById("feedback").textContent = "";
+        const box = document.getElementById("answers");
+        box.innerHTML = "";
+        let opts = new Set([c]);
+        let pool = [
+          c - 2,
+          c - 1,
+          c + 1,
+          c + 2,
+          c + 3,
+          Math.max(1, c + 4),
+        ].filter((x) => x > 0);
+        while (opts.size < 4)
+          opts.add(pool[Math.floor(Math.random() * pool.length)]);
+        [...opts]
+          .sort(() => Math.random() - 0.5)
+          .forEach((x) => {
+            const btn = document.createElement("button");
+            btn.className = "answer";
+            btn.textContent = fa(x);
+            btn.addEventListener("click", () => check(x, c));
+            box.appendChild(btn);
+          });
+      }
+      function check(x, c) {
+        const fb = document.getElementById("feedback");
+        if (x === c) {
+          fb.textContent = "آفرین! 👏";
+          const bunny = document.getElementById("bunny");
+          bunny.classList.remove("clap");
+          void bunny.offsetWidth;
+          bunny.classList.add("clap");
+          beep(660, 0.12);
+          setTimeout(() => beep(880, 0.12), 130);
+          setTimeout(() => {
+            level++;
+            if (level >= levels.length) {
+              document.getElementById("game").classList.add("hidden");
+              document.getElementById("end").classList.remove("hidden");
+            } else render();
+          }, 700);
+        } else {
+          lives--;
+          document.getElementById("lives").textContent =
+            "🥕".repeat(lives) + "▫️".repeat(3 - lives);
+          fb.textContent =
+            lives > 0
+              ? "دوباره تلاش کن! 💪"
+              : "سه اشتباه شد؛ از اول شروع می‌کنیم!";
+          beep(180, 0.16);
+          if (lives === 0)
+            setTimeout(() => {
+              lives = 3;
+              level = 0;
+              render();
+            }, 900);
+        }
+      }
+      function beep(freq, dur) {
+        if (!audioCtx) return;
+        const o = audioCtx.createOscillator(),
+          g = audioCtx.createGain();
+        o.frequency.value = freq;
+        o.type = "sine";
+        g.gain.setValueAtTime(0.035, audioCtx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+        o.connect(g);
+        g.connect(audioCtx.destination);
+        o.start();
+        o.stop(audioCtx.currentTime + dur);
+      }
+      function startMusic() {
+        if (!audioCtx)
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (melodyTimer) return;
+        const notes = [
+          261.63, 329.63, 392, 329.63, 293.66, 349.23, 440, 349.23,
+        ];
+        let i = 0;
+        melodyTimer = setInterval(() => {
+          if (music) beep(notes[i++ % notes.length], 0.22);
+        }, 650);
+      }
+      function toggleMusic() {
+        music = !music;
+        document.getElementById("musicBtn").textContent = music
+          ? "🎵 آهنگ ملایم: روشن"
+          : "🔇 آهنگ ملایم: خاموش";
+        if (music) startMusic();
+      }
+    </script>
+  </body>
+</html>
