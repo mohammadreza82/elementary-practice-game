@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>عددباز | بازی آموزشی ریاضی</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4efe6;--gr:#e6dfd0;--ink:#1d1b17;--cd:#fffdf8;--ac:#e4572e;--hi:#ffd23f;--ok:#2a9d5c;--no:#d62839;--mu:#7a7367;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#18181b;--gr:#242429;--ink:#f1ede4;--cd:#222227;--mu:#9b968b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#18181b;--gr:#242429;--ink:#f1ede4;--cd:#222227;--mu:#9b968b;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:linear-gradient(var(--gr) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--gr) 1px,transparent 1px) 0 0/28px 28px,var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif;overflow-x:hidden}
+.app{max-width:560px;margin:auto;padding:18px 16px 12px;min-height:100vh;display:flex;flex-direction:column;position:relative}
+.scr{display:none;flex:1;flex-direction:column;gap:14px}.scr.on{display:flex}
+h1{font-size:68px;font-weight:800;margin:10px 0 0;line-height:1.1}
+h1 span{background:linear-gradient(transparent 58%,var(--hi) 58%);padding:0 4px}
+.stamp{display:inline-block;align-self:flex-start;border:2px solid var(--ink);padding:3px 12px;border-radius:99px;font-weight:600;font-size:13px;transform:rotate(-2deg);margin-top:18px}
+.lead{color:var(--mu);line-height:1.9;margin:0}
+.btn{font:inherit;font-weight:700;color:var(--ink);background:var(--cd);border:2.5px solid var(--ink);border-radius:14px;padding:13px 16px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:.08s;text-align:center}
+.btn:active:not(:disabled){transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn:disabled{color:var(--ink);cursor:default}.btn.pri{background:var(--ac);color:#fff}
+.btn small{display:block;font-weight:400;opacity:.7;font-size:12px}
+.lv{display:grid;gap:12px;margin-top:6px}
+.dd b{position:absolute;font-size:90px;font-weight:800;color:transparent;-webkit-text-stroke:2px var(--mu);opacity:.35;z-index:-1}
+.dd b:nth-child(1){top:60px;left:6%;transform:rotate(14deg)}.dd b:nth-child(2){top:210px;left:30%;transform:rotate(-10deg)}.dd b:nth-child(3){top:30px;left:44%}.dd b:nth-child(4){top:150px;left:3%;transform:rotate(-18deg)}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700;gap:8px}
+.top .hr{color:var(--no);letter-spacing:2px;font-size:20px}
+.chip{border:2px solid var(--ink);border-radius:99px;padding:2px 12px;background:var(--cd);font-size:14px}
+.bar{height:10px;border:2px solid var(--ink);border-radius:9px;background:var(--cd);overflow:hidden}.bar b{display:block;height:100%;background:var(--ac);width:100%}
+.card{background:var(--cd);border:2.5px solid var(--ink);border-radius:18px;padding:22px 14px;box-shadow:6px 6px 0 var(--ink);font-size:23px;line-height:2;text-align:center;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-.4deg)}
+.shake{animation:sk .4s}@keyframes sk{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{font-size:21px;min-height:66px;display:flex;align-items:center;justify-content:center}
+.opt.ok{background:var(--ok);color:#fff}.opt.no{background:var(--no);color:#fff}.opt.off{opacity:.2;pointer-events:none}
+.msg{min-height:26px;text-align:center;font-weight:700}
+.tools{display:flex;gap:10px;justify-content:center}.tools .btn{padding:7px 14px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}.tools .btn:disabled{opacity:.35}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 5px;font-size:.85em;line-height:1.25}.fr i{font-style:normal;padding:0 5px}.fr i:first-child{border-bottom:2px solid currentColor}
+.mx{display:inline-flex;align-items:center}sup{font-size:.6em}
+.fig{width:210px;max-width:100%;display:block;margin:0 auto 6px;color:var(--ink)}
+.big{font-size:76px;font-weight:800;line-height:1}.mi{border-top:2px dashed var(--mu);padding:10px 0;display:flex;justify-content:space-between;gap:10px;align-items:center}.mi div{font-size:16px}.mi b{color:var(--ok)}
+h3{margin:6px 0 0}.best{color:var(--mu);font-size:14px;margin:0}
+footer{text-align:center;font-size:13px;color:var(--mu);padding:18px 0 6px;line-height:1.9}footer a{color:var(--ink);font-weight:700;text-decoration:none;direction:ltr;unicode-bidi:embed}
+</style></head><body><main class="app">
+<div class="dd"><b>+</b><b>÷</b><b>π</b><b>%</b></div>
+<section id="m" class="scr on">
+<span class="stamp">ریاضی پنجم و ششم دبستان</span>
+<h1>عدد<span>باز</span></h1>
+<p class="lead">۱۲ سؤال تصادفی، سه جان و یک تایمر که منتظر کسی نمی‌ماند. هر دور سؤال‌هایش با دور قبل فرق دارد؛ کسر، درصد، هندسه، الگو، احتمال و ...</p>
+<div class="lv">
+<button class="btn pri" onclick="start(5)">پایهٔ پنجم<small>کسر، اعشار، مساحت، ب.م.م و ک.م.م</small></button>
+<button class="btn" onclick="start(6)">پایهٔ ششم<small>عدد صحیح، توان، احتمال، نسبت و تناسب</small></button>
+<button class="btn" onclick="start(0)">ترکیبی<small>هر چیزی ممکن است بیاید</small></button></div>
+<p class="best" id="best"></p></section>
+<section id="g" class="scr">
+<div class="top"><span class="hr" id="lv"></span><span class="chip" id="pg"></span><span class="chip">امتیاز <b id="sc"></b></span><span class="chip">🔥 <b id="st"></b></span></div>
+<div class="bar"><b id="bar"></b></div>
+<div class="card" id="c"><div id="q"></div></div>
+<div class="msg" id="msg"></div>
+<div class="opts" id="o"></div>
+<div class="tools"><button class="btn" id="h" onclick="half()">حذف دو گزینه</button><button class="btn" id="tm" onclick="addT()">+۱۰ ثانیه</button><button class="btn" onclick="menu()">خروج</button></div></section>
+<section id="e" class="scr">
+<span class="stamp" id="rt"></span>
+<div><div class="big" id="rs"></div><p class="lead" id="ra"></p><p class="best" id="rb"></p></div>
+<div id="ms"></div>
+<button class="btn pri" onclick="menu()">یک دور دیگر</button></section>
+<footer>طراحی و برنامه‌نویسی: محمدرضا جمشیدی<br>شماره تماس: <a href="tel:09102943037">۰۹۱۰۲۹۴۳۰۳۷</a></footer></main>
+<script>
+const $=s=>document.querySelector(s),R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,P=a=>a[R(0,a.length-1)],sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]),th=n=>fa(n.toLocaleString('en')).replace(/,/g,'٬'),dc=x=>fa(String(+x.toFixed(2))).replace('.','٫'),nf=n=>Number.isInteger(n)?th(n):dc(n);
+const sg=n=>(n<0?'−':'')+fa(Math.abs(n)),sb=n=>`<bdi dir="ltr">${sg(n)}</bdi>`,bd=s=>`<bdi dir="ltr">${s}</bdi>`;
+const fr=(n,d)=>`<span class="fr"><i>${fa(n)}</i><i>${fa(d)}</i></span>`,mx=(w,n,d)=>`<span class="mx">${fa(w)}${fr(n,d)}</span>`,gcd=(a,b)=>b?gcd(b,a%b):a;
+const nd=(a,f=fa,s=1,ng=0)=>[1,-1,2,-2,10,-10,5,-5].map(k=>a+k*s).concat([a*2,Math.round(a/2)]).filter(x=>Math.abs(x-a)>1e-9&&(ng||x>=0)).map(f);
+const svg=b=>`<svg viewBox="0 0 160 96" class="fig">${b}</svg>`,tx=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle" fill="currentColor" font-size="13">${s}</text>`;
+const G=[
+[5,L=>{const d=R(3,9),a=R(1,d-1),b=R(1,d-1);if(L<6)return{q:`${fr(a,d)} + ${fr(b,d)} = ؟`,a:fr(a+b,d),d:[fr(a+b,d+d),fr(a+b+1,d),fr(a*b,d),fr(a+b-1,d)]};return{q:`${fr(a,d)} + ${fr(b,2*d)} = ؟`,a:fr(2*a+b,2*d),d:[fr(a+b,3*d),fr(2*a+b+1,2*d),fr(2*a+b-1,2*d),fr(a+b,2*d)]}}],
+[5,L=>{let a,b,c,e;do{b=R(2,9);e=R(2,9);a=R(1,L>5?2*b:b-1);c=R(1,L>5?2*e:e-1)}while(a*e==c*b);const A=a*e>c*b;return{q:`کدام کسر بزرگ‌تر است؟<br>${fr(a,b)} ؟ ${fr(c,e)}`,a:A?fr(a,b):fr(c,e),d:[A?fr(c,e):fr(a,b),'مساوی‌اند']}}],
+[5,L=>{const p=P(L>5?[5,15,30,40,60,75]:[10,20,25,50]),n=R(1,15)*20,v=p*n/100;return{q:`${fa(p)}٪ عدد ${fa(n)} چند است؟`,a:fa(v),d:nd(v)}}],
+[5,()=>{const d=R(3,8),a=R(1,d-1),k=R(2,9),n=d*k;return{q:`${fr(a,d)} عدد ${fa(n)} چند است؟`,a:fa(a*k),d:nd(a*k).concat([fa(n-a*k)])}}],
+[5,L=>{const w=R(3,15),h=R(2,12),t=R(0,L>5?3:1),rc=svg(`<rect x="30" y="14" width="100" height="56" fill="none" stroke="currentColor" stroke-width="3"/>${tx(80,88,fa(w))}${tx(14,46,fa(h))}`);
+if(t==0)return{q:rc+`مساحت این مستطیل چند سانتی‌متر مربع است؟`,a:fa(w*h),d:nd(w*h).concat([fa(2*(w+h))])};
+if(t==1)return{q:rc+`محیط این مستطیل چند سانتی‌متر است؟`,a:fa(2*(w+h)),d:nd(2*(w+h)).concat([fa(w*h)])};
+if(t==2){const b=2*R(2,8),g=R(3,12);return{q:svg(`<polygon points="20,74 140,74 60,10" fill="none" stroke="currentColor" stroke-width="3"/><line x1="60" y1="10" x2="60" y2="74" stroke="currentColor" stroke-dasharray="4"/>${tx(80,90,fa(b))}${tx(48,46,fa(g))}`)+`مساحت این مثلث چند سانتی‌متر مربع است؟`,a:fa(b*g/2),d:nd(b*g/2).concat([fa(b*g)])}}
+const s=R(3,15);return{q:`محیط یک مربع ${fa(4*s)} سانتی‌متر است. مساحتش چند سانتی‌متر مربع است؟`,a:fa(s*s),d:nd(s*s).concat([fa(4*s),fa(2*s*s)])}}],
+[5,L=>{const a=R(2,9),b=R(2,9),c=R(3,9);if(L<6){const x=R(1,a),v=a+b*c-x;return{q:bd(`${fa(a)} + ${fa(b)} × ${fa(c)} − ${fa(x)}`)+' = ؟',a:fa(v),d:nd(v).concat([fa((a+b)*c-x)])}}
+const e=R(2,5),d=e*R(2,9),v=(a+b)*c-d/e;return{q:bd(`(${fa(a)} + ${fa(b)}) × ${fa(c)} − ${fa(d)} ÷ ${fa(e)}`)+' = ؟',a:fa(v),d:nd(v).concat([fa((a+b)*c-d+e)])}}],
+[5,L=>{const a=R(3,15),b=R(2,12),x=R(2,12),t=R(0,L>5?3:2);let q,v=x;if(t==0)q=`؟ + ${fa(a)} = ${fa(x+a)}`;else if(t==1)q=`${fa(a)} × ؟ = ${fa(a*x)}`;else if(t==2){q=`؟ ÷ ${fa(a)} = ${fa(x)}`;v=a*x}else q=`${fa(a)} × ؟ + ${fa(b)} = ${fa(a*x+b)}`;return{q:'جای خالی را پر کن:<br>'+bd(q),a:fa(v),d:nd(v)}}],
+[5,()=>{const[m,n]=P([[2,3],[3,4],[2,5],[3,5],[4,5],[3,7],[5,6],[2,7]]),g=R(2,6),x=g*m,y=g*n,l=g*m*n;return P([0,1])?{q:`ب.م.م دو عدد ${fa(x)} و ${fa(y)} کدام است؟`,a:fa(g),d:nd(g).concat([fa(l),fa(m),fa(n)])}:{q:`ک.م.م دو عدد ${fa(x)} و ${fa(y)} کدام است؟`,a:fa(l),d:nd(l,fa,g).concat([fa(x*y),fa(x+y)])}}],
+[5,L=>{const t=R(0,L>5?3:2),r=x=>Math.round(x*100)/100;let a=R(11,99)/10,b=R(11,99)/10,v,q;if(t==0){v=r(a+b);q=`${dc(a)} + ${dc(b)}`}else if(t==1){if(a<b)[a,b]=[b,a];v=r(a-b);q=`${dc(a)} − ${dc(b)}`}else if(t==2){b=R(2,9);v=r(a*b);q=`${dc(a)} × ${fa(b)}`}else{a=R(12,60)/10;b=R(2,9)/10;v=r(a*b);q=`${dc(a)} × ${dc(b)}`}return{q:bd(q)+' = ؟',a:dc(v),d:nd(v,dc,.1).concat([dc(v*10),dc(v/10)])}}],
+[5,L=>{const v=P([40,50,60,70,80,90,120]),t=R(2,6);return L>5&&R(0,1)?{q:`ماشینی با سرعت ثابت ${fa(v)} کیلومتر بر ساعت، ${fa(v*t)} کیلومتر را در چند ساعت می‌پیماید؟`,a:fa(t),d:nd(t)}:{q:`ماشینی با سرعت ثابت ${fa(v)} کیلومتر بر ساعت حرکت می‌کند. در ${fa(t)} ساعت چند کیلومتر می‌رود؟`,a:fa(v*t),d:nd(v*t,fa,10)}}],
+[5,()=>{const p=P([10,20,25,50]),c=R(2,15)*20000,a=c*(100-p)/100;return{q:`قیمت یک کفش ${th(c)} تومان است. با ${fa(p)}٪ تخفیف چند تومان باید پرداخت؟`,a:th(a),d:nd(a,th,1000).concat([th(c*p/100)])}}],
+[5,L=>{const m=R(12,19),a=R(-4,4),b=R(-4,4),c=R(-4,4),n=[a,b,c,-a-b-c].map(x=>m+x);return L>5?{q:`میانگین چهار عدد ${fa(m)} است. سه عدد از آن‌ها ${n.slice(0,3).map(fa).join('، ')} است. عدد چهارم کدام است؟`,a:fa(n[3]),d:nd(n[3])}:{q:`نمره‌های ریاضی علی ${n.map(fa).join('، ')} است. میانگین نمره‌هایش چند است؟`,a:fa(m),d:nd(m)}}],
+[5,L=>{const[a,b]=P([[1,2],[2,3],[3,5],[1,4],[2,5],[3,4]]),k=R(2,9);return L>5?{q:`نسبت دختران به پسران یک کلاس ${fa(a)} به ${fa(b)} است و کلاس ${fa((a+b)*k)} دانش‌آموز دارد. چند دختر دارد؟`,a:fa(a*k),d:nd(a*k).concat([fa(b*k)])}:{q:`نسبت دختران به پسران کلاسی ${fa(a)} به ${fa(b)} است. اگر ${fa(b*k)} پسر داشته باشد، چند دختر دارد؟`,a:fa(a*k),d:nd(a*k).concat([fa(a*b*k)])}}],
+[5,L=>{const u=P([['کیلومتر','متر',1000],['متر','سانتی‌متر',100],['کیلوگرم','گرم',1000],['لیتر','میلی‌لیتر',1000]]),x=L>5?R(11,99)/10:R(2,9),v=Math.round(x*u[2]);return{q:`${nf(x)} ${u[0]} چند ${u[1]} است؟`,a:nf(v),d:[v*10,v/10,v*100,v/100].map(nf)}}],
+[6,()=>{let a=R(-12,12),b=R(-12,12);if(a>=0&&b>=0)a=-a-1;const o=P(['+','−']),v=o=='+'?a+b:a-b,f=x=>sb(x);return{q:bd(`${sg(a)} ${o} (${sg(b)})`)+' = ؟',a:f(v),d:nd(v,f,1,1).concat([f(a-b),f(-v)])}}],
+[5,()=>{if(R(0,1)){const k=P([3,4,5,6,9]),c=k*R(Math.ceil(100/k),Math.floor(990/k)),w=sh([1,2,-1,-2,3,-3,4]).filter(o=>((o%k)+k)%k).slice(0,3).map(o=>fa(c+o));return{q:`کدام عدد بر ${fa(k)} بخش‌پذیر است؟`,a:fa(c),d:w}}return{q:'کدام عدد اول است؟',a:fa(P([31,37,41,43,47,53,59,61,67,71,73,79,83,89,97])),d:sh([33,39,45,49,51,55,57,63,65,69,75,77,81,85,87,91,93,95,99]).slice(0,3).map(fa)}}],
+[5,()=>{const t=R(0,2),D=x=>fa(x)+'°';let a=R(30,80),b=R(30,80),q,v;if(t==0){v=180-a-b;q=`دو زاویهٔ یک مثلث ${D(a)} و ${D(b)} است. زاویهٔ سوم چند درجه است؟`}else if(t==1){a=R(10,80);v=90-a;q=`متممِ زاویهٔ ${D(a)} چند درجه است؟`}else{a=R(4,17)*10;v=180-a;q=`مکملِ زاویهٔ ${D(a)} چند درجه است؟`}return{q,a:D(v),d:nd(v,D,5)}}],
+[5,L=>{const t=R(0,L>5?3:1);let a=R(1,12),d=R(2,9),T,v,s=d;if(t<2){T=[0,1,2,3].map(i=>a+i*d);v=a+4*d}else if(t==2){a=R(1,4);d=R(2,3);T=[0,1,2,3].map(i=>a*d**i);v=a*d**4;s=a}else{const n=R(1,6);T=[0,1,2,3].map(i=>(n+i)**2);v=(n+4)**2;s=2}return{q:`الگو را ادامه بده:<br>${T.map(fa).join(' ، ')} ، ؟`,a:fa(v),d:nd(v,fa,s)}}],
+[5,()=>{const d=R(2,6),w=R(1,6),n=R(1,d-1);return{q:`عدد مخلوط ${mx(w,n,d)} را به کسر تبدیل کن.`,a:fr(w*d+n,d),d:[fr(w*n+d,d),fr(w+n,d),fr(w*d-n,d),fr(w*d+n,d+w)]}}],
+[6,()=>{const r=R(1,5),b=R(1,5),g=R(1,4),t=r+b+g;return{q:`در یک کیسه ${fa(r)} مهرهٔ قرمز، ${fa(b)} آبی و ${fa(g)} سبز هست. مهره‌ای تصادفی برمی‌داریم. احتمال قرمز بودنش چقدر است؟`,a:fr(r,t),d:[fr(b,t),fr(g,t),fr(t-r,t),fr(r,t+1)]}}],
+[6,()=>{const n=R(3,12),t=R(0,2);if(t==0)return{q:`${fa(n)}<sup>۲</sup> = ؟`,a:fa(n*n),d:nd(n*n).concat([fa(2*n)])};if(t==1)return{q:bd(`√${fa(n*n)}`)+' = ؟',a:fa(n),d:nd(n).concat([fa(n*n/2|0)])};const c=R(2,5);return{q:`${fa(c)}<sup>۳</sup> = ؟`,a:fa(c**3),d:[fa(c*3),fa(c*c),fa(c**3+c),fa(c**3-c)]}}],
+[5,()=>{const n=R(1050,98990),t=P([10,100,1000]),v=Math.round(n/t)*t;return{q:`عدد ${th(n)} را به نزدیک‌ترین مضرب ${fa(t)} گرد کن.`,a:th(v),d:[Math.floor(n/t)*t,Math.ceil(n/t)*t,v+t,v-t].map(th)}}]];
+let S,T;
+const show=id=>document.querySelectorAll('.scr').forEach(e=>e.classList.toggle('on',e.id==id));
+function bestTxt(){let b=0;try{b=+localStorage.getItem('ab')||0}catch(e){}$('#best').textContent=b?`بهترین امتیاز تو: ${fa(b)}`:''}
+function menu(){clearInterval(T);show('m');bestTxt()}
+function start(L){S={L,i:0,sc:0,lv:3,st:0,ok:0,seen:new Set(),bag:[],miss:[],h:1,tm:1};$('#h').disabled=$('#tm').disabled=false;show('g');next()}
+function hud(){$('#sc').textContent=fa(S.sc);$('#st').textContent=fa(S.st);$('#pg').textContent=`${fa(S.i)} از ۱۲`;$('#lv').textContent='♥'.repeat(S.lv)+'♡'.repeat(3-S.lv)}
+function next(){if(S.i>=12||S.lv<1)return end();S.i++;let x;for(let k=0;k<40;k++){if(!S.bag.length)S.bag=sh(G.filter(g=>S.L!=5||g[0]==5));x=S.bag.pop()[1](S.L||P([5,6]));if(!S.seen.has(x.q))break}S.seen.add(x.q);
+const o=sh([...new Set([x.a,...sh(x.d)])].slice(0,4)),t=S.L==6?30:25;S.c={x,o,ci:o.indexOf(x.a),done:0,t,tt:t};
+$('#q').innerHTML=x.q;$('#o').innerHTML=o.map((v,i)=>`<button class="btn opt" onclick="ans(${i})">${v}</button>`).join('');$('#msg').textContent='';hud();clearInterval(T);T=setInterval(()=>{S.c.t-=.1;$('#bar').style.width=Math.max(0,S.c.t/S.c.tt*100)+'%';if(S.c.t<=0)ans(-1)},100)}
+function ans(i){const c=S.c;if(c.done)return;c.done=1;clearInterval(T);const r=i==c.ci;document.querySelectorAll('#o .opt').forEach((e,k)=>{e.disabled=true;if(k==c.ci)e.classList.add('ok');else if(k==i)e.classList.add('no')});
+if(r){S.st++;S.ok++;const p=10+Math.ceil(c.t)+Math.min(S.st,5)*2;S.sc+=p;$('#msg').textContent=`${P(['آفرین!','عالی!','درسته!','دمت گرم!','حرف نداشت!'])}  +${fa(p)}`}
+else{S.lv--;S.st=0;S.miss.push({q:c.x.q,a:c.x.a});$('#msg').textContent=i<0?'زمان تمام شد! جواب درست سبز شد.':'نشد! جواب درست سبز شد.';$('#c').classList.add('shake')}
+hud();setTimeout(()=>{$('#c').classList.remove('shake');next()},r?1000:2000)}
+function half(){if(!S.h||S.c.done)return;S.h=0;$('#h').disabled=true;const b=[...document.querySelectorAll('#o .opt')];let n=Math.min(2,b.length-2);sh(b.map((_,k)=>k)).forEach(k=>{if(k!=S.c.ci&&n>0){b[k].classList.add('off');n--}})}
+function addT(){if(!S.tm||S.c.done)return;S.tm=0;S.c.t+=10;S.c.tt+=10;$('#tm').disabled=true}
+function end(){clearInterval(T);show('e');const a=S.ok;$('#rt').textContent=S.lv<1?'جان‌هات تموم شد':a>=11?'استاد ریاضی':a>=8?'ریاضی‌دان':a>=5?'در حال پیشرفت':'تمرین کن، می‌شه!';$('#rs').textContent=fa(S.sc);$('#ra').textContent=`${fa(a)} پاسخ درست از ${fa(S.i)} سؤال`;
+let b=0;try{b=+localStorage.getItem('ab')||0;if(S.sc>b){localStorage.setItem('ab',S.sc);$('#rb').textContent='رکورد جدید!';b=S.sc}else $('#rb').textContent=`رکورد: ${fa(b)}`}catch(e){}
+$('#ms').innerHTML=S.miss.length?'<h3>مرور اشتباه‌ها</h3>'+S.miss.map(m=>`<div class="mi"><div>${m.q}</div><b>${m.a}</b></div>`).join(''):'<h3>بدون هیچ اشتباهی!</h3>'}
+document.addEventListener('keydown',e=>{if($('#g').classList.contains('on')&&S.c&&/^[1-4]$/.test(e.key)&&S.c.o[e.key-1]!==undefined)ans(e.key-1)});
+bestTxt();
+</script></body></html>
