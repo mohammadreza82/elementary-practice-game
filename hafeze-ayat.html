@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حافظه‌ی آیات | محمدرضا جمشیدی | جزء سی‌ام</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f2;--ink:#14201e;--soft:#66736f;--card:#fff;--line:#e4e1d6;--acc:#0f8b72;--warm:#d9822b;--bad:#d4553a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1716;--ink:#eef2ee;--soft:#93a5a0;--card:#172423;--line:#26383a;--acc:#3ecdb0;--warm:#f0a649;--bad:#f0775c}}
+:root[data-theme="dark"]{--bg:#0e1716;--ink:#eef2ee;--soft:#93a5a0;--card:#172423;--line:#26383a;--acc:#3ecdb0;--warm:#f0a649;--bad:#f0775c}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px}
+header{display:flex;gap:14px;align-items:center;padding:26px 0 18px}
+.mark{width:44px;height:44px;flex:none;position:relative}
+.mark i{position:absolute;inset:6px;border-radius:9px;border:3px solid var(--acc)}
+.mark i+i{transform:rotate(45deg);border-color:var(--warm)}
+h1{margin:0;font-size:clamp(24px,5.5vw,34px);font-weight:800;letter-spacing:-.3px}
+.sub{margin:2px 0 0;color:var(--soft);font-size:14px}
+.by{margin:6px 0 0;font-size:13px;color:var(--soft);line-height:1.9}
+.by strong{color:var(--ink)}.by a{color:var(--acc);text-decoration:none;font-weight:600}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px 0 18px;border-top:1px solid var(--line)}
+.sels{display:flex;gap:8px;flex-wrap:wrap}
+select{font:inherit;font-size:14px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.stats{display:flex;gap:8px}
+.pill{padding:7px 14px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:13px;color:var(--soft)}
+.pill b{color:var(--ink);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.c{perspective:800px;border:0;padding:0;background:none;font:inherit;color:inherit;cursor:pointer;text-align:center}
+.in{display:grid;transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;height:100%;min-height:150px}
+.c.on .in{transform:rotateY(180deg)}
+.f{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 10px}
+.back{background:var(--acc);background-image:repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.18) 14px 15px),repeating-linear-gradient(-45deg,transparent 0 14px,rgba(255,255,255,.18) 14px 15px);color:#fff;font-size:34px;box-shadow:0 6px 16px -8px var(--acc)}
+.front{transform:rotateY(180deg);background:var(--card);border:2px solid var(--line);font-family:Amiri,serif;font-size:clamp(18px,4.4vw,22px);line-height:1.9}
+.front em{font:600 11px Vazirmatn,sans-serif;font-style:normal;padding:2px 10px;border-radius:99px;margin-bottom:6px;color:#fff;background:var(--acc)}
+.c.b .front em{background:var(--warm)}
+.front small{font:11px Vazirmatn,sans-serif;color:var(--soft);margin-top:6px}
+.c.ok .front{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,var(--card))}
+.c.miss .front{border-color:var(--bad);animation:sh .4s .5s}
+@keyframes sh{25%{transform:rotateY(180deg) translateX(6px)}75%{transform:rotateY(180deg) translateX(-6px)}}
+@media (prefers-reduced-motion:reduce){.in{transition:none}*{animation:none!important}}
+.hint{color:var(--soft);font-size:13px;margin:0 0 14px}
+.win{display:none;text-align:center;margin-top:20px;padding:22px;border-radius:22px;background:var(--card);border:2px solid var(--acc)}
+.win.on{display:block}
+.win .st{font-size:36px;color:var(--warm);letter-spacing:6px}
+button.act{font:inherit;font-weight:600;padding:11px 26px;border-radius:12px;border:0;background:var(--acc);color:#fff;cursor:pointer;margin-top:8px}
+footer{margin-top:34px;padding:20px 0 30px;border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--soft);line-height:2}
+footer strong{color:var(--ink)}footer a{color:var(--acc);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="mark" aria-hidden="true"><i></i><i></i></div>
+ <div>
+  <h1>حافظه‌ی آیات</h1>
+  <p class="sub">کارت‌های آیه و ادامه‌ی درست آن را جفت کن</p>
+  <p class="by">طراح و برنامه‌نویس: <strong>محمدرضا جمشیدی</strong> — مهندس برنامه‌نویس فرانت‌اند · 📞 <a href="tel:09102943037">۰۹۱۰۲۹۴۳۰۳۷</a></p>
+ </div>
+</header>
+
+<div class="bar">
+ <div class="sels">
+  <select id="sel" aria-label="انتخاب سوره"></select>
+  <select id="lvl" aria-label="سطح"><option value="4">آسان · ۴ جفت</option><option value="6" selected>متوسط · ۶ جفت</option><option value="8">سخت · ۸ جفت</option></select>
+ </div>
+ <div class="stats"><span class="pill">حرکت <b id="mv">۰</b></span><span class="pill">زمان <b id="tm">۰:۰۰</b></span><span class="pill">جفت <b id="pr">۰</b></span></div>
+</div>
+<p class="hint">دو کارت را باز کن: یکی «آیه» و دیگری «ادامه‌ی» همان آیه. اگر جفت درست بود، کارت‌ها باز می‌مانند.</p>
+
+<main class="grid" id="grid"></main>
+<div class="win" id="win"><div class="st" id="st"></div><h2 style="margin:6px 0">آفرین! همه‌ی جفت‌ها پیدا شد</h2><p id="wm" style="margin:0 0 6px;color:var(--soft)"></p><button class="act" id="again">دور تازه</button></div>
+
+<footer>
+ طراح و برنامه‌نویس: <strong>محمدرضا جمشیدی</strong> — مهندس برنامه‌نویس فرانت‌اند<br>
+ شماره‌ی تماس: <a href="tel:09102943037">۰۹۱۰۲۹۴۳۰۳۷</a>
+</footer>
+</div>
+
+<script>
+const S=[
+{n:"الإخلاص",fa:"اخلاص",v:["قُلْ هُوَ اللَّهُ أَحَدٌ","اللَّهُ الصَّمَدُ","لَمْ يَلِدْ وَلَمْ يُولَدْ","وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ"]},
+{n:"الفلق",fa:"فلق",v:["قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ","مِن شَرِّ مَا خَلَقَ","وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ","وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ","وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ"]},
+{n:"الناس",fa:"ناس",v:["قُلْ أَعُوذُ بِرَبِّ النَّاسِ","مَلِكِ النَّاسِ","إِلَٰهِ النَّاسِ","مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ","الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ","مِنَ الْجِنَّةِ وَالنَّاسِ"]},
+{n:"الكوثر",fa:"کوثر",v:["إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ","فَصَلِّ لِرَبِّكَ وَانْحَرْ","إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ"]},
+{n:"العصر",fa:"عصر",v:["وَالْعَصْرِ","إِنَّ الْإِنسَانَ لَفِي خُسْرٍ","إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ"]},
+{n:"النصر",fa:"نصر",v:["إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ","وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا","فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ إِنَّهُ كَانَ تَوَّابًا"]},
+{n:"قريش",fa:"قریش",v:["لِإِيلَافِ قُرَيْشٍ","إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ","فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ","الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ"]},
+{n:"الفيل",fa:"فیل",v:["أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ","أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ","وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ","تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ","فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ"]},
+{n:"المسد",fa:"مسد",v:["تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ","مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ","سَيَصْلَىٰ نَارًا ذَاتَ لَهَبٍ","وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ","فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ"]},
+{n:"الكافرون",fa:"کافرون",v:["قُلْ يَا أَيُّهَا الْكَافِرُونَ","لَا أَعْبُدُ مَا تَعْبُدُونَ","وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ","وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ","وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ","لَكُمْ دِينُكُمْ وَلِيَ دِينِ"]},
+{n:"الماعون",fa:"ماعون",v:["أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ","فَذَٰلِكَ الَّذِي يَدُعُّ الْيَتِيمَ","وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ","فَوَيْلٌ لِّلْمُصَلِّينَ","الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ","الَّذِينَ هُمْ يُرَاءُونَ","وَيَمْنَعُونَ الْمَاعُونَ"]},
+{n:"التكاثر",fa:"تکاثر",v:["أَلْهَاكُمُ التَّكَاثُرُ","حَتَّىٰ زُرْتُمُ الْمَقَابِرَ","كَلَّا سَوْفَ تَعْلَمُونَ","ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ","كَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْيَقِينِ","لَتَرَوُنَّ الْجَحِيمَ","ثُمَّ لَتَرَوُنَّهَا عَيْنَ الْيَقِينِ","ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ"]},
+{n:"الهمزة",fa:"همزه",v:["وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ","الَّذِي جَمَعَ مَالًا وَعَدَّدَهُ","يَحْسَبُ أَنَّ مَالَهُ أَخْلَدَهُ","كَلَّا لَيُنبَذَنَّ فِي الْحُطَمَةِ","وَمَا أَدْرَاكَ مَا الْحُطَمَةُ","نَارُ اللَّهِ الْمُوقَدَةُ","الَّتِي تَطَّلِعُ عَلَى الْأَفْئِدَةِ","إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ","فِي عَمَدٍ مُّمَدَّدَةٍ"]},
+{n:"الزلزلة",fa:"زلزله",v:["إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا","وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا","وَقَالَ الْإِنسَانُ مَا لَهَا","يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا","بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا","يَوْمَئِذٍ يَصْدُرُ النَّاسُ أَشْتَاتًا لِّيُرَوْا أَعْمَالَهُمْ","فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ","وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ"]},
+{n:"الضحى",fa:"ضحی",v:["وَالضُّحَىٰ","وَاللَّيْلِ إِذَا سَجَىٰ","مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ","وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ","وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ","أَلَمْ يَجِدْكَ يَتِيمًا فَآوَىٰ","وَوَجَدَكَ ضَالًّا فَهَدَىٰ","وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ","فَأَمَّا الْيَتِيمَ فَلَا تَقْهَرْ","وَأَمَّا السَّائِلَ فَلَا تَنْهَرْ","وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ"]},
+{n:"الشرح",fa:"شرح",v:["أَلَمْ نَشْرَحْ لَكَ صَدْرَكَ","وَوَضَعْنَا عَنكَ وِزْرَكَ","الَّذِي أَنقَضَ ظَهْرَكَ","وَرَفَعْنَا لَكَ ذِكْرَكَ","فَإِنَّ مَعَ الْعُسْرِ يُسْرًا","إِنَّ مَعَ الْعُسْرِ يُسْرًا","فَإِذَا فَرَغْتَ فَانصَبْ","وَإِلَىٰ رَبِّكَ فَارْغَب"]},
+{n:"التين",fa:"تین",v:["وَالتِّينِ وَالزَّيْتُونِ","وَطُورِ سِينِينَ","وَهَٰذَا الْبَلَدِ الْأَمِينِ","لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ","ثُمَّ رَدَدْنَاهُ أَسْفَلَ سَافِلِينَ","إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ","فَمَا يُكَذِّبُكَ بَعْدُ بِالدِّينِ","أَلَيْسَ اللَّهُ بِأَحْكَمِ الْحَاكِمِينَ"]},
+{n:"القارعة",fa:"قارعه",v:["الْقَارِعَةُ","مَا الْقَارِعَةُ","وَمَا أَدْرَاكَ مَا الْقَارِعَةُ","يَوْمَ يَكُونُ النَّاسُ كَالْفَرَاشِ الْمَبْثُوثِ","وَتَكُونُ الْجِبَالُ كَالْعِهْنِ الْمَنفُوشِ","فَأَمَّا مَن ثَقُلَتْ مَوَازِينُهُ","فَهُوَ فِي عِيشَةٍ رَّاضِيَةٍ","وَأَمَّا مَنْ خَفَّتْ مَوَازِينُهُ","فَأُمُّهُ هَاوِيَةٌ","وَمَا أَدْرَاكَ مَا هِيَهْ","نَارٌ حَامِيَةٌ"]},
+{n:"القدر",fa:"قدر",v:["إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ","وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ","لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ","تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ","سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ"]},
+{n:"العاديات",fa:"عادیات",v:["وَالْعَادِيَاتِ ضَبْحًا","فَالْمُورِيَاتِ قَدْحًا","فَالْمُغِيرَاتِ صُبْحًا","فَأَثَرْنَ بِهِ نَقْعًا","فَوَسَطْنَ بِهِ جَمْعًا","إِنَّ الْإِنسَانَ لِرَبِّهِ لَكَنُودٌ","وَإِنَّهُ عَلَىٰ ذَٰلِكَ لَشَهِيدٌ","وَإِنَّهُ لِحُبِّ الْخَيْرِ لَشَدِيدٌ","أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِي الْقُبُورِ","وَحُصِّلَ مَا فِي الصُّدُورِ","إِنَّ رَبَّهُم بِهِمْ يَوْمَئِذٍ لَّخَبِيرٌ"]},
+{n:"الشمس",fa:"شمس",v:["وَالشَّمْسِ وَضُحَاهَا","وَالْقَمَرِ إِذَا تَلَاهَا","وَالنَّهَارِ إِذَا جَلَّاهَا","وَاللَّيْلِ إِذَا يَغْشَاهَا","وَالسَّمَاءِ وَمَا بَنَاهَا","وَالْأَرْضِ وَمَا طَحَاهَا","وَنَفْسٍ وَمَا سَوَّاهَا","فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا","قَدْ أَفْلَحَ مَن زَكَّاهَا","وَقَدْ خَابَ مَن دَسَّاهَا","كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا","إِذِ انبَعَثَ أَشْقَاهَا","فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا","فَكَذَّبُوهُ فَعَقَرُوهَا فَدَمْدَمَ عَلَيْهِمْ رَبُّهُم بِذَنبِهِمْ فَسَوَّاهَا","وَلَا يَخَافُ عُقْبَاهَا"]},
+];
+const $=id=>document.getElementById(id);
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const cnt={};S.forEach(s=>s.v.forEach(t=>cnt[t]=(cnt[t]||0)+1));
+let cards=[],open=[],lock=false,moves=0,found=0,pairs=0,t0=0,timer=null,best={};
+try{best=JSON.parse(localStorage.getItem("mem-best")||"{}")}catch(e){}
+
+$("sel").innerHTML='<option value="-1">همه‌ی سوره‌ها ('+fa(S.length)+')</option>'+S.map((s,i)=>`<option value="${i}">سوره‌ی ${s.fa}</option>`).join("");
+$("sel").onchange=start;$("lvl").onchange=start;$("again").onclick=start;
+
+function start(){
+ clearInterval(timer);timer=null;t0=0;moves=0;found=0;open=[];lock=false;$("win").classList.remove("on");
+ const f=+$("sel").value,n=+$("lvl").value,c=[];
+ S.forEach((s,si)=>{if(f>=0&&f!==si)return;for(let vi=0;vi<s.v.length-1;vi++)if(cnt[s.v[vi]]===1&&cnt[s.v[vi+1]]===1)c.push({si,vi})});
+ const used=new Set,P=[];
+ for(const x of shuf(c)){if(P.length===n)break;const a=x.si+"-"+x.vi,b=x.si+"-"+(x.vi+1),a0=x.si+"-"+(x.vi-1);
+  if(used.has(a)||used.has(b))continue;used.add(a);used.add(b);P.push(x)}
+ pairs=P.length;
+ cards=shuf(P.flatMap((p,id)=>{const r=`سوره‌ی ${S[p.si].fa} · آیه‌ی ${fa(p.vi+1)} و ${fa(p.vi+2)}`;
+  return[{id,r:"a",t:S[p.si].v[p.vi],ref:r},{id,r:"b",t:S[p.si].v[p.vi+1],ref:r}]}));
+ $("grid").innerHTML=cards.map((c,i)=>`<button class="c ${c.r}" data-i="${i}" aria-label="کارت ${fa(i+1)}"><div class="in"><div class="f back">۞</div><div class="f front"><em>${c.r==="a"?"آیه":"ادامه"}</em>${c.t}<small></small></div></div></button>`).join("");
+ stats()}
+
+function stats(){$("mv").textContent=fa(moves);$("pr").textContent=fa(found)+"/"+fa(pairs);
+ const s=t0?Math.floor((Date.now()-t0)/1000):0;$("tm").textContent=fa(Math.floor(s/60)+":"+String(s%60).padStart(2,"0"))}
+
+$("grid").addEventListener("click",e=>{
+ const b=e.target.closest(".c");if(!b||lock)return;const i=+b.dataset.i;
+ if(b.classList.contains("on")||b.classList.contains("ok"))return;
+ if(!t0){t0=Date.now();timer=setInterval(stats,1000)}
+ b.classList.add("on");open.push(i);if(open.length<2)return;
+ moves++;const[x,y]=open.map(k=>document.querySelector(`[data-i="${k}"]`));open=[];
+ if(cards[+x.dataset.i].id===cards[+y.dataset.i].id){
+  [x,y].forEach(el=>{el.classList.add("ok");el.querySelector("small").textContent=cards[+el.dataset.i].ref});found++;stats();if(found===pairs)finish()}
+ else{lock=true;[x,y].forEach(el=>el.classList.add("miss"));stats();
+  setTimeout(()=>{[x,y].forEach(el=>el.classList.remove("on","miss"));lock=false},1100)}});
+
+function finish(){
+ clearInterval(timer);stats();const k="p"+pairs,r=moves/pairs,s=r<=2?3:r<=3.2?2:1;
+ if(!best[k]||moves<best[k]){best[k]=moves;try{localStorage.setItem("mem-best",JSON.stringify(best))}catch(e){}}
+ $("st").textContent="★".repeat(s)+"☆".repeat(3-s);
+ $("wm").textContent=`${fa(moves)} حرکت · بهترین نتیجه در این سطح: ${fa(best[k])} حرکت`;
+ $("win").classList.add("on");$("win").scrollIntoView({behavior:"smooth",block:"center"})}
+start();
+</script>
+</body>
+</html>
